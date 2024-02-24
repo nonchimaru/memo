@@ -96,13 +96,35 @@ $ git remote add origin URL(リモート URL)
 - ローカルのリポジトリに対して GitHub の内容を取ってくること
   <br>リモートリポジトリにプッシュ
   <pre>
-  $ git push origin <ブランチ名>
+  git push origin <ブランチ名>
   </pre>
   リポジトリから情報収取
   <pre>
-  $ git pull origin <ブランチ名>
+  git pull origin <ブランチ名>
   </pre>
   リモートリポジトリから情報収取
   <pre>
-  $ git fetch origin
+  git fetch origin
   </pre>
+
+# マージする
+
+<pre>
+git switch main
+git pull origin main
+git switch ブランチ名
+git merge main
+</pre>
+
+# 誤ったブランチで開発を進めてしまった
+
+現在のブランチがベースになってるため、現在のブランチが今回の変更点以外の作業分がコミットされてるなら良くない。
+
+<pre>
+git stash
+git switch -c ブランチ名
+git stash pop
+git add .
+git commit -m ""
+git push origin ブランチ名
+</pre>
